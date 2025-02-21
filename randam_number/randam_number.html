@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>randam_number</title>
+    <link rel="stylesheet" href="randam_number.css">
+</head>
+<body>
+     <section id="section">
+        <div><h2>Gusses Number</h2></div>
+        <div id="guess_contaner">
+            <input type="Number" id="input"><br>
+            <br>
+            <button id="submit">Submit</button>
+            <button onclick="location.reload();" id="restart">Restart</button>
+            <h4><span id="span"> prvious Gusses</span></h4>
+             <h2><span id="span1"></span></h2>
+             <h2><span id="span2"></span></h2>
+             <h4 id="Remaining">Remaining guess:10</h4>
+             <div><span></span></div>
+        </div>
+     </section>
+     <script>
+       // const input=document.getElementById('input');
+        const submit=document.getElementById("submit");
+        const guess_contaner=document.getElementById("guess_contaner");
+        const span =document.getElementById("span")
+        let span1=document.getElementById("span1")
+        let span2=document.getElementById("span2")
+
+         const randam=parseInt(Math.random()*100+1)
+         console.log(`${randam}`)
+         let array=[];
+        
+         submit.addEventListener('click', function(e){
+            let firstInput = document.getElementById('input');
+            let input=parseInt(firstInput.value);
+            console.log(input);
+            if(randam==input){
+                span1.innerHTML=`You are winner ${randam}`
+                span2.innerHTML="";
+            }else if(randam>input){
+                span2.innerHTML=`Your number is Small`;
+            }
+            else if(randam<input){
+                span2.innerHTML=`Your number is Big`;
+            }
+            
+            array.push(input);
+            span.innerHTML = array.join(", ");
+            console.log(input);
+            
+            // firstInput.value="";
+            //console.log(input);
+           fun();
+           
+         })
+         let gussNumber=10;
+         let newNumber=9;
+         function fun(){
+           
+            gussNumber--;
+          
+            console.log(gussNumber);
+            
+            const Remaining=document.getElementById('Remaining')
+            if(gussNumber>0){
+                Remaining.innerHTML=` Remaining gusses : ${newNumber}`
+                
+            }
+            else if(gussNumber===0){
+                alert("stop")
+                  Remaining.innerHTML=` Game Over`
+                  Remaining.style.backgroundColor="yellow";
+                  Remaining.style.color="red"
+                  Remaining.style.fontSize="50px"
+                submit.disabled=true;
+            }
+            newNumber--;
+         }
+         
+       
+
+
+     </script>
+</body>
+</html>
