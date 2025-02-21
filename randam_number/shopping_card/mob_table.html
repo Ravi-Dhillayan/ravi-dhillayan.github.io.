@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Shopping Cart</h2>
+
+<table id="cartTable">
+    <tr>
+        <th>Sr. No</th>
+        <th>Image</th>
+        
+        <th>Product Name</th>
+        <th>Quantiy</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+</table>
+
+<h3>Total Price: ₹<span id="totalPrice">0</span></h3>
+
+<button onclick="clearCart()">Clear Cart</button>
+<button onclick="goBack()">Continue Shopping</button>
+
+<script>
+    function loadCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartTable = document.getElementById("cartTable");
+        let totalPrice = 0;
+        
+        
+
+        cart.forEach((item, index) => {
+           
+            let row = cartTable.insertRow();
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td><img src="${item.image}" alt="${item.name}"></td>
+                <td>${item.name}</td>
+                 <td>${item.Quantiy}</td>
+                <td>₹${item.price}</td>
+               
+                <td><button onclick="removeFromCart(${index})">Remove</button></td>
+            `;
+            totalPrice += item.price*item.Quantiy;
+            console.log(cart);
+             console.log(cart[0].image);
+            
+        });
+
+        document.getElementById("totalPrice").innerText = totalPrice;
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        location.reload();
+    }
+
+    function clearCart() {
+        localStorage.removeItem('cart');
+        location.reload();
+    }
+
+    function goBack() {
+        window.location.href = "moblie.html";
+    }
+
+    loadCart();
+</script>
+
+</body>
+</html>

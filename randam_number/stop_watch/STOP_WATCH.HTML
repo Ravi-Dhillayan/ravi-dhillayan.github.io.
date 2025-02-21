@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOP_WATCH</title>
+    <link rel="stylesheet" href="STOP_WATCH.CSS">
+</head>
+<body>
+    
+    <div id="STOP_WATCHConter">
+        <p>Create a StopWatch using HTML, CSS, and JavaScript</p>
+        <div id="Watch_display">
+           00: 00 : 00
+        </div>
+        <div id="WatchWork">
+          <button id="startbtn" onclick="start()" style="background-color: red ;">START</button>
+          <button id="stopbtn" style="background-color: green ;">STOP</button>
+          <button id="resetbtn" style="background-color: blue ;">RESET</button>
+        </div>
+    </div>
+    <script>
+           const startbtn= document.getElementById("startbtn");
+           const stopbtn= document.getElementById("stopbtn");
+           const resetbtn= document.getElementById("resetbtn");
+
+           const Watch_display=document.getElementById("Watch_display");
+
+           let value=null;
+           let min=0;
+           let sec=0;
+           let mine=0;
+           Watch_display.innerHTML=`00 : 00: 00`
+           function valueincreage(){
+           
+            mine++;
+              if(mine==100){
+                mine=0;
+                sec++;
+                if(sec==60){
+                sec=0;
+                min++;
+              }
+              }
+             const newmin= min<10?`0${min}`:`${min}`
+              const newsec=sec<10?`0${sec}`:`${sec}`
+              const newmine=mine<10?`0${mine}`:`${mine}`
+              Watch_display.innerHTML=`${newmin} : ${newsec} : ${newmine}`
+            //   console.log();
+              
+           }
+        
+        
+           
+        //    startbtn.addEventListener('click',function(){
+        //     value=setInterval(valueincreage, 10);
+        //    })
+        function start(){
+            if(value!=null){
+                clearInterval(value)
+            }
+            value=setInterval(valueincreage, 10);
+        }
+           stopbtn.addEventListener('click',function(){
+            clearInterval(value);
+           })
+           resetbtn.addEventListener('click', function(){
+            Watch_display.innerHTML="00 : 00 : 00"
+            // clearInterval(value);
+            min=mine=sec=0;
+           })
+
+
+           
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 300px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   background-color: coral;
+  }
+  #Watch_display{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 100px;
+
+  }
+  #WatchWork{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+#STOP_WATCHConter
+{
+    height: 200px;
+    width: 400px;
+    background-color: yellow;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+
+    
+    /* align-content: center; */
+   /* padding-top: 30px; */
+
+}
+
+
+#startbtn, #stopbtn, #resetbtn{
+    height: 25px;
+    width: 55px;
+    background-color: black;
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: center; */
+}
